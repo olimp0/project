@@ -1,82 +1,140 @@
 # Olimpo
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+## Introduction
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+Olimpo is a project designed to simplify your workflow and enhance your productivity. This README will guide you on how to use the Conventional Commits standard for your commits and leverage a helpful script in the `package.json` file for streamlining your commit process.
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+## Committing Code Using Conventional Commits
 
-## Finish your CI setup
+Olimpo uses the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.4/) specification for commit messages. This ensures that commit messages are structured and consistent, which is essential for automated versioning and better collaboration.
 
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/ZBkVXRqR4l)
+### What are Conventional Commits?
 
+Conventional Commits follow a simple format:
 
-## Run tasks
+```
+[optional scope]:
 
-To run the dev server for your app, use:
+[optional body]
 
-```sh
-npx nx serve admin
+[optional footer(s)]
 ```
 
-To create a production bundle:
+#### Key Elements:
 
-```sh
-npx nx build admin
+- **`type`**: Describes the purpose of the change (e.g., `feat`, `fix`, `docs`, `chore`, etc.).
+- **`scope`**: (Optional) Provides additional context for the change (e.g., the part of the codebase affected).
+- **`description`**: A concise summary of the change in the present tense.
+- **`body`**: (Optional) Detailed explanation of the change.
+- **`footer`**: (Optional) Notes for breaking changes or issues fixed.
+
+#### Common `type` Values:
+
+- **feat**: A new feature.
+- **fix**: A bug fix.
+- **docs**: Documentation updates.
+- **style**: Changes that do not affect functionality (e.g., code formatting).
+- **refactor**: Code restructuring without functional changes.
+- **test**: Adding or updating tests.
+- **chore**: Maintenance tasks (e.g., dependency updates).
+
+#### Example Commit Message:
+
+```
+feat(auth): add password reset functionality
+
+This adds a new endpoint for users to reset their passwords via email.
+
+BREAKING CHANGE: The auth token format has been updated.
 ```
 
-To see all available targets to run for a project, run:
+## Streamlining Commits with the `commit` Script
 
-```sh
-npx nx show project admin
+To make the process of crafting proper commit messages easier, we have included a script in the `package.json` file:
+
+```json
+"scripts": {
+  "commit": "commit"
+}
 ```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+### How to Use the Script
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+1. Install dependencies (if you haven’t already):
 
-## Add new projects
-
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
-
-Use the plugin's generator to create new projects.
-
-To generate a new application, use:
-
-```sh
-npx nx g @nx/angular:app demo
+```bash
+npm install
 ```
 
-To generate a new library, use:
+2. Run the commit script:
 
-```sh
-npx nx g @nx/angular:lib mylib
+```bash
+npm run commit
 ```
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+3. Follow the prompts: The script will guide you through creating a properly formatted commit message by asking questions about the type, scope, description, and other relevant details.
 
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## Branch Convention
 
+Olimpo follows the **Git Flow** branching model to ensure a structured and efficient workflow.
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Git Flow Overview
 
-## Install Nx Console
+Git Flow is a branching model that defines a strict branching structure for managing releases. It consists of the following primary branches:
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+- **`main`**: The main branch where the latest development changes are integrated. This is the branch where feature branches are merged.
+- **`production`**: The branch where the source code of HEAD always reflects a production-ready state.
 
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Supporting Branches
 
-## Useful links
+Git Flow also uses supporting branches to aid parallel development and to assist in quickly fixing live issues. These branches have limited lifetimes and are as follows:
 
-Learn more:
+- **Feature branches**: Used to develop new features for the upcoming or a distant future release. Typically branch off from `main` and merge back into `main`.
+- **Release branches**: Used to prepare a new production release. Typically branch off from `main` and merge into both `production` and `main`.
+- **Hotfix branches**: Used to quickly patch production releases. Typically branch off from `production` and merge back into both `production` and `main`.
 
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Main Branch
 
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- The `main` branch is the primary branch where the development team collaborates.
+- All new feature branches, bug fixes, or updates should be created from the `main` branch.
+
+### Production Branch
+
+- The `production` branch is used exclusively for production-ready code.
+- Code from the `main` branch is merged into the `production` branch only when it is ready for deployment.
+
+### Creating a New Branch
+
+1. Start by checking out the `main` branch:
+   ```bash
+   git checkout main
+   ```
+
+````
+2. Create a new branch for your feature or fix:
+```bash
+git switch -c <branch-name>
+````
+
+### Branch Naming Convention:
+
+- Feature branches: feature/\<short-description\>
+- Bug fix branches: fix/\<short-description\>
+- Release branches: release/\<version-number\>
+- Hotfix branches: hotfix/\<short-description\>
+
+### Merging Changes
+
+- Use **Pull Requests (PRs)** to merge changes back into the main branch.
+- Before merging to production, ensure the branch has been thoroughly tested and approved.
+
+### Good Practices
+
+1. **Consistent Naming**: Follow the branch naming conventions strictly to avoid confusion and ensure clarity.
+2. **Regular Merges**: Regularly merge `main` into feature branches to keep them up-to-date with the latest changes.
+3. **Small Commits**: Make small, frequent commits to make it easier to track changes and resolve conflicts.
+4. **Code Reviews**: Use pull requests for code reviews to maintain code quality and share knowledge among team members.
+5. **Automated Testing**: Integrate automated testing to catch issues early and ensure the stability of the codebase.
+6. **Documentation**: Document significant changes and decisions in commit messages or a dedicated documentation file.
+
+By adhering to these practices, the team can maintain a clear workflow, reduce merge conflicts, and ensure a seamless path to production.
