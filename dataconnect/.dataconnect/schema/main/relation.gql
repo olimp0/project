@@ -1,0 +1,26 @@
+extend type Role {
+  """
+  ✨ List `User` objects in a one-to-many relationship (where `User`.`role` is this object).
+  """
+  Users_on_role(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: User_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [User_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [User!]! @fdc_generated(from: "User.role", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+}
