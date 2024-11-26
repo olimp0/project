@@ -1,0 +1,13 @@
+@if(!!label()) {
+<label [for]="control?.id" class="text-sm">{{ label() }}</label>
+}
+<div
+  class="border rounded-lg flex px-2 py-2 content transition-colors duration-300"
+  [ngClass]="{
+    'border-blue-400': focused(),
+    'border-red-500': hasError() && !focused(),
+    'border-gray-400': !focused() && !hasError()
+  }"
+>
+  <ng-content></ng-content>
+</div>

@@ -138,3 +138,56 @@ git switch -c <branch-name>
 6. **Documentation**: Document significant changes and decisions in commit messages or a dedicated documentation file.
 
 By adhering to these practices, the team can maintain a clear workflow, reduce merge conflicts, and ensure a seamless path to production.
+
+## Viewing UI Components with Storybook
+
+Olimpo includes a set of reusable UI components that can be viewed and tested in isolation using Storybook. Storybook provides a convenient way to develop and showcase UI components without running the entire application.
+
+### Running Storybook
+
+To start Storybook and view the UI components:
+
+1. Navigate to the root of the project.
+2. Run the following command:
+
+   ```bash
+   nx run ui:storybook
+   ```
+
+3. Open your browser and go to `http://localhost:4400` to view the Storybook interface.
+
+### Common UI Components
+
+The `ui` library contains common UI components such as buttons, forms, and modals that are used throughout the Olimpo project. These components are designed to be reusable and customizable.
+
+### Importing UI Components into Your Application
+
+To use the UI components in your application, follow these steps:
+
+1. Import the desired component into your application module or component:
+
+   ```typescript
+   // Example: Importing FormFieldComponent and InputDirective
+   import { FormFieldComponent } from '@olp/ui';
+   import { InputDirective } from '@olp/ui';
+
+   @NgModule({
+     imports: [
+       // ...other modules
+       FormFieldComponent,
+       InputDirective,
+     ],
+     // ...other module properties
+   })
+   export class AppModule {}
+   ```
+
+2. Use the component in your template:
+
+   ```html
+   <olp-form-field label="Username">
+     <input type="text" olpInput />
+   </olp-form-field>
+   ```
+
+By following these steps, you can easily integrate the common UI components into your application and maintain a consistent look and feel across the project.

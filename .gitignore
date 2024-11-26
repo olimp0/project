@@ -46,3 +46,6 @@ Thumbs.db
 .firebase
 dataconnect-debug.log
 firebase-debug.log
+
+
+storybook-static
