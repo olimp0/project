@@ -1,0 +1,1 @@
+pnpm npx nx format:check --exclude=pnpm-lock.yaml
