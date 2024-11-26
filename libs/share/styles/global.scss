@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  // css variables for form field component
+  --olp-form-min-width: 180px;
+  --olp-form-min-height: 40px;
+}

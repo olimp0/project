@@ -1,0 +1,10 @@
+:host {
+  display: inline-flex;
+  min-width: var(--olp-form-min-width);
+  flex-direction: column;
+  gap: 5px;
+}
+
+.content {
+  min-height: var(--olp-form-min-height);
+}
