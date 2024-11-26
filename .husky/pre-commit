@@ -1,1 +1,2 @@
-pnpm npx nx format:check --exclude=pnpm-lock.yaml
+npx nx format:check
+npx nx affected -t lint

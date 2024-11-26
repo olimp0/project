@@ -12,7 +12,8 @@
       "!{projectRoot}/src/test-setup.[jt]s",
       "!{projectRoot}/test-setup.[jt]s"
     ],
-    "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
+    "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"],
+    "formatting": ["default", "!{projectRoot}/**/*.json", "!{projectRoot}/pnpm-lock.yaml"]
   },
   "nxCloudId": "67453543859cbb0f3cc95066",
   "targetDefaults": {
@@ -42,6 +43,9 @@
           "codeCoverage": true
         }
       }
+    },
+    "@nx/workspace:format": {
+      "inputs": ["formatting"]
     }
   },
   "generators": {
